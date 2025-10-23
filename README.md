@@ -29,6 +29,18 @@ O Proxy atua como intermediário entre o cliente e o objeto real, garantindo que
 | `updateEmail()` | Restrito | `OWNER` (o próprio usuário) |
 
 ---
+
+## 🧩 Divisão de Tarefas
+
+| Membro | Função | Tarefas de Desenvolvimento | Tarefas de Apresentação |
+| :--- | :--- | :--- | :--- |
+| **Membro A** | 1️⃣ Arquiteto e Testador | - Definir a arquitetura (estrutura) e relação entre classes <br>- Criar o diagrama UML <br>- Implementar o cliente (`main`) e fazer os testes no código <br>- Ajudar na integração dos componentes | - Preparar a demonstração final |
+| **Membro B** | 2️⃣ Serviço Real (UserProfile) | - Implementar a classe base `UserProfile` com dados e métodos | (Responsabilidade do Membro E) |
+| **Membro C** | 3️⃣ Proxy de Proteção | - Implementar a classe `UserAccessProxy` <br>- Realizar o controle de acesso (ADMIN, USER, OWNER) | (Responsabilidade do Membro E) |
+| **Membro D** | 4️⃣ Logger/Auditoria | - Implementar a classe `Logger` <br>- Registrar ações (logs, acessos permitidos/negados) <br>- Integrar o Logger ao Proxy | (Responsabilidade do Membro E) |
+| **Membro E** | 5️⃣ Apresentação | - (Apoio na documentação, se necessário) | - Criar todos os slides da apresentação (Introdução, Serviço Real, Proxy, Logger, Testes e Conclusão) |
+
+---
 %% Diagrama de Arquitetura - Protection Proxy
 graph TD
     %% Define os Atores Externos
@@ -68,14 +80,5 @@ graph TD
     class Cliente,User externo
     class Real,Log interno
     class Proxy proxy
-## 🧩 Divisão de Tarefas
-
-| Membro | Função | Tarefas de Desenvolvimento | Tarefas de Apresentação |
-| :--- | :--- | :--- | :--- |
-| **Membro A** | 1️⃣ Arquiteto e Testador | - Definir a arquitetura (estrutura) e relação entre classes <br>- Criar o diagrama UML <br>- Implementar o cliente (`main`) e fazer os testes no código <br>- Ajudar na integração dos componentes | - Preparar a demonstração final |
-| **Membro B** | 2️⃣ Serviço Real (UserProfile) | - Implementar a classe base `UserProfile` com dados e métodos | (Responsabilidade do Membro E) |
-| **Membro C** | 3️⃣ Proxy de Proteção | - Implementar a classe `UserAccessProxy` <br>- Realizar o controle de acesso (ADMIN, USER, OWNER) | (Responsabilidade do Membro E) |
-| **Membro D** | 4️⃣ Logger/Auditoria | - Implementar a classe `Logger` <br>- Registrar ações (logs, acessos permitidos/negados) <br>- Integrar o Logger ao Proxy | (Responsabilidade do Membro E) |
-| **Membro E** | 5️⃣ Apresentação | - (Apoio na documentação, se necessário) | - Criar todos os slides da apresentação (Introdução, Serviço Real, Proxy, Logger, Testes e Conclusão) |
 
 ---
