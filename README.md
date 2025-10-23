@@ -29,13 +29,15 @@ O Proxy atua como intermediário entre o cliente e o objeto real, garantindo que
 | `updateEmail()` | Restrito | `OWNER` (o próprio usuário) |
 
 ---
+## 🧩 Divisão de Tarefas
 
-## 🛠️ Divisão de Tarefas
+| Membro                                                     | Função                               | Tarefas de Desenvolvimento                                                                                                                                                                            | Tarefas de Apresentação                                                                                            |
+| :---------------------------------------------------------- | :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------- |
+| **Membro A – Arquiteto do Sistema (Líder Técnico)**         | Responsável por estruturar o projeto | - Definir a arquitetura e relação entre classes (`UserProfile`, `UserAccessProxy`, `Logger`) <br>- Criar o diagrama UML simples (classes e interações) <br>- Ajudar nos testes de integração          | - Criar **1 slide introdutório** explicando o objetivo do projeto, o padrão Proxy e a motivação do problema        |
+| **Membro B – Serviço Real (Classe Base)**                   | Desenvolvedor do modelo de dados     | - Implementar a classe `UserProfile` com atributos (`id`, `name`, `email`, `salary`) e métodos getters/setters <br>- Garantir encapsulamento e clareza no código                                      | - Criar **1 slide** mostrando o funcionamento do serviço real (sem Proxy) e por que ele precisa de controle        |
+| **Membro C – Proxy de Proteção (Segurança)**                | Desenvolvedor da lógica de acesso    | - Implementar a classe `UserAccessProxy`, verificando permissões (ADMIN, USER, OWNER) antes de acessar ou modificar dados <br>- Delegar as operações ao `UserProfile` quando autorizado               | - Criar **2 slides** explicando a lógica de segurança e exemplos práticos (quem pode fazer o quê)                  |
+| **Membro D – Logger/Auditoria (Controle e Monitoramento)**  | Desenvolvedor da camada de auditoria | - Criar classe `Logger` que salva ações com data/hora, tipo de usuário e resultado (permitido/negado) <br>- Integrar o `Logger` ao `UserAccessProxy` <br>- Implementar método `show_logs()` formatado | - Criar **1 slide** mostrando exemplos de logs e como o sistema melhora a rastreabilidade                          |
+| **Membro E – Cliente/Testes (Integração e Demonstração)**   | Testador e apresentador final        | - Implementar o script `main` que cria perfis diferentes e executa operações (ADMIN, USER, OWNER) <br>- Validar todas as combinações de acesso e demonstrar logs no terminal                          | - Criar **2 slides** com resultados dos testes, prints do terminal e **conclusões** sobre segurança e uso do Proxy |
 
-| Membro | Tarefa | Descrição |
-| :--- | :--- | :--- |
-| **Membro A: O Serviço Real** | **Implementar a classe `UserProfile`** | Criar a classe que contém os dados (`id`, `name`, `email`, `salary`). Os métodos apenas retornam ou modificam os dados, sem controle de acesso. |
-| **Membro B: O Proxy de Proteção** | **Implementar a classe `UserAccessProxy`** | Criar a classe que envolve o `UserProfile`, aplicando a lógica de verificação de permissões antes de delegar chamadas. |
-| **Membro C: O Cliente/Testes** | **Criar o ambiente de teste e cliente** | Criar o arquivo HTML (opcional) e o script de teste, instanciando diferentes perfis (ADMIN, USER, OWNER) para validar o funcionamento do Proxy. |
 
 ---
