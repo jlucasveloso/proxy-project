@@ -29,6 +29,45 @@ O Proxy atua como intermediário entre o cliente e o objeto real, garantindo que
 | `updateEmail()` | Restrito | `OWNER` (o próprio usuário) |
 
 ---
+%% Diagrama de Arquitetura - Protection Proxy
+graph TD
+    %% Define os Atores Externos
+    Cliente("fa:fa-user Cliente (main)")
+    User("fa:fa-id-badge Usuário Logado (com Roles/ID)")
+
+    %% Define o Sistema Interno (como a VPC no exemplo)
+    subgraph "Sistema de Controle de Acesso"
+        direction LR
+        
+        %% 1. Camada de Proteção (O "Porteiro")
+        subgraph "Camada de Proteção"
+            Proxy("fa:fa-shield-alt UserAccessProxy")
+        end
+
+        %% 2. Serviços Internos (Protegidos)
+        subgraph "Serviços Internos"
+            Real("fa:fa-database UserProfile (Serviço Real)")
+            Log("fa:fa-file-alt Logger (Auditoria)")
+        end
+        
+        %% Define as interações internas
+        Proxy -- "4. [SE PERMITIDO] Encaminha Solicitação" --> Real
+        Real -- "5. Retorna Dados Reais" --> Proxy
+        Proxy -- "3. Registra Tentativa (Permitida/Negada)" --> Log
+    end
+
+    %% Define o Fluxo de Entrada e Saída
+    Cliente -- "1. Solicitação (ex: getSalary())" --> Proxy
+    User -- "2. Fornece Credenciais" --> Proxy
+    Proxy -- "6. Resposta (Dados ou Erro de Acesso)" --> Cliente
+
+    %% Estilização (opcional, mas ajuda)
+    classDef externo fill:#D2FAD2,stroke:#333
+    classDef interno fill:#D2D2FA,stroke:#333
+    classDef proxy fill:#FAD2D2,stroke:#B00,stroke-width:2px
+    class Cliente,User externo
+    class Real,Log interno
+    class Proxy proxy
 ## 🧩 Divisão de Tarefas
 
 | Membro | Função | Tarefas de Desenvolvimento | Tarefas de Apresentação |
