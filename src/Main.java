@@ -19,5 +19,5 @@ public class Main {
         System.out.println("\n--- TESTE 3: OWNER ---");
         System.out.println(owner.getSalary());
         System.out.println(owner.updateEmail("joana.final@empresa.com"));
-    }
+}
 }
