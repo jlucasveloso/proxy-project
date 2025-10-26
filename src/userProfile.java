@@ -24,6 +24,10 @@ public class UserProfile {
         return "[SUCESSO] Email atualizado para " + newEmail;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public int getId() {
         return id;
     }
